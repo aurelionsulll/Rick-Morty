@@ -4,7 +4,7 @@ import tw from 'twrnc';
 
 export default function Character({ character }) {
 	return (
-		<View style={tw`my-4 ml-6 `}>
+		<View style={tw`mt-4 ml-6 `}>
 			<Image style={tw`h-50 w-50 rounded-2xl`} source={{ uri: character.image }} />
 
 			<View style={tw`flex-row absolute items-center bg-black/40 w-full justify-end rounded-t-2xl`}>
