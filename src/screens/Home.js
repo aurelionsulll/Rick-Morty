@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Character from '../components/Character';
 import Location from '../components/Location';
 import Episode from '../components/Episode';
+import { Icon } from 'react-native-elements';
 
 export default function Home({ navigation }) {
 	const [characters, setCharacters] = useState([]);
@@ -39,8 +40,16 @@ export default function Home({ navigation }) {
 
 	return (
 		<SafeAreaView style={tw`bg-emerald-500 h-full `}>
-			<ScrollView>
-				<TextInput placeholder='Search by character name' style={tw`bg-white py-4 px-5 mx-7 my-6 rounded-md `} />
+			<ScrollView stickyHeaderIndices={[0]}>
+				<View>
+					<TextInput
+						placeholder='Search by character name'
+						style={tw`bg-white py-4 px-5 mx-7 my-6 rounded-xl border border-gray-300 shadow-xl`}
+					/>
+					<View style={tw`absolute top-9 right-10`}>
+						<Icon name='search' />
+					</View>
+				</View>
 				<View style={tw`flex-row items-center mb-3 mt-2 mx-6 justify-between`}>
 					<Text style={tw` text-2xl font-bold text-emerald-900`}>Featured characters</Text>
 					<Text style={tw` font-bold text-white underline`}>View more</Text>
