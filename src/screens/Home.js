@@ -49,7 +49,10 @@ export default function Home({ navigation }) {
 				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 					<View style={tw`flex-row justify-center `}>
 						{characters.map((character) => (
-							<TouchableOpacity key={character.id} onPress={() => navigation.navigate('CharacterDetails', { name: 'Jane' })}>
+							<TouchableOpacity
+								key={character.id}
+								onPress={() => navigation.navigate('CharacterDetails', { character: character })}
+							>
 								<Character character={character} />
 							</TouchableOpacity>
 						))}
