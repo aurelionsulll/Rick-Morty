@@ -1,4 +1,4 @@
-import { Text, View, ScrollView, SafeAreaView, TextInput } from 'react-native';
+import { Text, View, ScrollView, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -38,7 +38,7 @@ export default function Home({ navigation }) {
 	}, []);
 
 	return (
-		<SafeAreaView style={tw`bg-emerald-500 h-full`}>
+		<SafeAreaView style={tw`bg-emerald-500 h-full `}>
 			<ScrollView>
 				<TextInput placeholder='Search by character name' style={tw`bg-white py-4 px-5 mx-7 my-6 rounded-md `} />
 				<View style={tw`flex-row items-center mb-3 mt-2 mx-6 justify-between`}>
@@ -49,7 +49,9 @@ export default function Home({ navigation }) {
 				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 					<View style={tw`flex-row justify-center `}>
 						{characters.map((character) => (
-							<Character key={character.id} character={character} />
+							<TouchableOpacity key={character.id} onPress={() => navigation.navigate('CharacterDetails', { name: 'Jane' })}>
+								<Character character={character} />
+							</TouchableOpacity>
 						))}
 					</View>
 				</ScrollView>
@@ -70,10 +72,10 @@ export default function Home({ navigation }) {
 					<Text style={tw` font-bold text-white underline`}>View more</Text>
 				</View>
 
-				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+				<ScrollView style={tw`mb-10`} horizontal={true} showsHorizontalScrollIndicator={false}>
 					<View style={tw`flex-row mx-4`}>
 						{episodes.map((episode) => (
-							<Episode episode={episode} />
+							<Episode key={episode.id} episode={episode} />
 						))}
 					</View>
 				</ScrollView>
