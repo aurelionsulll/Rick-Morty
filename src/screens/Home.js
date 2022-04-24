@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Character from '../components/Character';
 import Location from '../components/Location';
+import Episode from '../components/Episode';
 
 export default function Home({ navigation }) {
 	const [characters, setCharacters] = useState([]);
@@ -29,7 +30,7 @@ export default function Home({ navigation }) {
 
 		axios.get('https://rickandmortyapi.com/api/episode')
 			.then(function (response) {
-				setEpisodes(response.data.results.slice(0, -11));
+				setEpisodes(response.data.results);
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -69,11 +70,13 @@ export default function Home({ navigation }) {
 					<Text style={tw` font-bold text-white underline`}>View more</Text>
 				</View>
 
-				<View style={tw`flex-row flex-wrap justify-center mb-4`}>
-					{episodes.map((episode) => (
-						<Text>{episode.name}</Text>
-					))}
-				</View>
+				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+					<View style={tw`flex-row mx-4`}>
+						{episodes.map((episode) => (
+							<Episode episode={episode} />
+						))}
+					</View>
+				</ScrollView>
 			</ScrollView>
 		</SafeAreaView>
 	);
